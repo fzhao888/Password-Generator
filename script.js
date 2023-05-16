@@ -18,7 +18,7 @@ function writePassword() {
 
   //generate password
 
-  //password alert
+  //password alert    
 
 
   passwordText.value = password;
