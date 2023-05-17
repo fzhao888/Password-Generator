@@ -34,7 +34,7 @@ function writePassword() {
   }
 
   //generate password
-  var password = generatePassword(lowercase,uppercase,numeric,special);
+  var password = generatePassword(lowercase,uppercase,numeric,special,length);
   var passwordText = document.querySelector("#password");
 
   //password alert
@@ -45,9 +45,31 @@ function writePassword() {
 
 }
 
-function generatePassword(lowercase,uppercase,numeric,special){
- 
+function generatePassword(lowercase,uppercase,numeric,special,length){
+  var lowercaseString = "abcdefghijklmnopqrstuvwxyz";
+  var uppercaseString = lowercaseString.toUpperCase();
+  var numericString = "1234567890";
+  var specialString = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"; 
+  var myPassword = "";
+  var newPassword = "";
 
+  if(lowercase){
+    myPassword = myPassword.concat(lowercaseString);
+  }
+
+  if(uppercase){
+    myPassword = myPassword.concat(uppercaseString);
+  }
+
+  if(numeric){
+    myPassword = myPassword.concat(numericString);
+  }
+
+  if(special){
+    myPassword = myPassword.concat(specialString);
+  }
+
+  myPassword = myPassword.split('');
 }
 
 // Add event listener to generate button
