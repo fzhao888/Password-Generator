@@ -16,11 +16,11 @@ function writePassword() {
 
     if(length>128 || length<8 ){
       //checks for empty prompt
-      //if(length.trim() === ""){
-       // length = window.prompt("Sorry, the length entered was empty.  Please try again.");
-    //  }else{
+      if(length.trim() === ""){
+       length = window.prompt("Sorry, the length entered was empty.  Please try again.");
+      }else{
         length = window.prompt("Sorry, the length entered was not between 8 and 128. Please try again.");
-      //}
+      }
     }
 
     //checks length is a number
