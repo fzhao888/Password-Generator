@@ -70,6 +70,13 @@ function generatePassword(lowercase,uppercase,numeric,special,length){
   }
 
   myPassword = myPassword.split('');
+  
+  for(var i=0; i<length;i++){
+    var random = Math.floor(Math.random()*myPassword.length);
+    newPassword += myPassword[random];
+  }
+
+  return newPassword;
 }
 
 // Add event listener to generate button
