@@ -23,7 +23,7 @@ Here is a screenshot of the website:
 
 The screenshots shows a password of length 8 containing lowercase, uppercase, numeric, and special characters.
 
-![screenshot of website](assets\images\fzhao888.github.io_Password-Generator.png)
+![screenshot of website](assets/images/fzhao888.github.io_Password-Generator.png)
 
 ## Credits
 The starter code for this project was obtained at https://git.bootcampcontent.com/University-of-Minnesota/UofM-VIRT-FSF-PT-04-2023-U-LOLC-ENTG/-/tree/main/03-JavaScript/02-Challenge. 
