@@ -90,19 +90,78 @@ function generatePassword(lowercase,uppercase,numeric,special,length){
   //end adding character type criteria to password
 
   //generates a random password based on the character type criteria
-  //do{
+  do{
     newPassword = "";
     for(var i=0; i<length;i++){
       var random = Math.floor(Math.random()*myPassword.length);
       newPassword += myPassword[random];
     } 
- // }while(!fulfillCriteria(lowercase,uppercase,numeric,special,
-   // lowercaseString,uppercaseString,numericString,specialString,newPassword));
+  }while(!fulfillCriteria(lowercase,uppercase,numeric,special,
+    lowercaseString,uppercaseString,numericString,specialString,newPassword));
 
   return newPassword;
 }
 
+//checks if the generated password fulfills the character type criteria
+function fulfillCriteria(lowercase,uppercase,numeric,special,
+  lowercaseString,uppercaseString,numericString,specialString,newPassword){
+  var lowercaseArray = lowercaseString.split("");
+  var uppercaseArray = uppercaseString.split("");
+  var numericArray = numericString.split("");
+  var specialArray = specialString.split("");
+  var lower = true;
+  var upper = true;
+  var num = true;
+  var spec = true;
+  
+  //sets boolean variable to false if it is a criteria
+  if(lowercase){
+    lower = false;
+  }
 
+  if(uppercase){
+    upper = false;
+  }
+
+  if(numeric){
+    num = false;
+  }
+
+  if(special){
+    spec = false;
+  }
+  //end of setting boolean variable to false 
+
+  //checks if generated password contains a lowercase
+  for(var i = 0;!lower && i<lowercaseArray.length;i++){
+    if(newPassword.indexOf(lowercaseArray[i]) !== -1){
+      lower = true;
+    }
+  }
+
+  //checks if generated password contains an uppercase
+  for(var i = 0;!upper && i<uppercaseArray.length;i++){
+    if(newPassword.indexOf(uppercaseArray[i]) !== -1){
+      upper = true; 
+    }
+  }
+
+  //checks if generated password contains a number
+  for(var i = 0;!num && i<numericArray.length;i++){
+    if(newPassword.indexOf(numericArray[i]) !== -1){
+      num = true; 
+    }
+  }
+
+  //checks if generated password contains a special character
+  for(var i = 0;!spec && i<specialArray.length;i++){
+    if(newPassword.indexOf(specialArray[i]) !== -1){
+      spec = true; 
+    }
+  }
+
+  return lower && upper && num && spec;
+}
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
