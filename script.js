@@ -102,7 +102,7 @@ function generatePassword(lowercase,uppercase,numeric,special,length){
   return newPassword;
 }
 
-//checks if the generated password fulfills the character type criteria
+//checks if the generated password fulfills the character type criteria 
 function fulfillCriteria(lowercase,uppercase,numeric,special,
   lowercaseString,uppercaseString,numericString,specialString,newPassword){
   var lowercaseArray = lowercaseString.split("");
