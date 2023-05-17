@@ -5,13 +5,31 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
   //prompt for length
   var length = window.prompt("Please enter a password length between 8 and 128: ");
-  if(!length){
+  
+  //exit if cancel is clicked
+  if(length === null){
     return;
   }
-  //validate password prompt is between 8 and 128
-  while(length>128 || length<8){
-    length = window.prompt("Sorry, the password entered was not between 8 and 128.\nPlease enter a password length between 8 and 128: ");
-    if(!length){
+  
+  //validate length prompt is between 8 and 128, number, and empty prompt
+  while(length>128 || length<8 || isNaN(length) ){
+
+    if(length>128 || length<8 ){
+      //checks for empty prompt
+      //if(length.trim() === ""){
+       // length = window.prompt("Sorry, the length entered was empty.  Please try again.");
+    //  }else{
+        length = window.prompt("Sorry, the length entered was not between 8 and 128. Please try again.");
+      //}
+    }
+
+    //checks length is a number
+    if(isNaN(length)){
+      length = window.prompt("Sorry, the length entered was not a number. Please try again.");
+    }
+
+    //exit if cancel is clicked
+    if(length === null){
       return;
     }
   }
@@ -38,21 +56,20 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   //password alert
-  window.alert("Congratulations! Your password is successfully generated.")    
-
-
+  window.alert("Congratulations! Your password is successfully generated.");
   passwordText.value = password;
-
 }
 
+//generates password
 function generatePassword(lowercase,uppercase,numeric,special,length){
   var lowercaseString = "abcdefghijklmnopqrstuvwxyz";
   var uppercaseString = lowercaseString.toUpperCase();
   var numericString = "1234567890";
   var specialString = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"; 
   var myPassword = "";
-  var newPassword = "";
+  var newPassword = "";  
 
+  //adds character type criteria to password:
   if(lowercase){
     myPassword = myPassword.concat(lowercaseString);
   }
@@ -70,14 +87,22 @@ function generatePassword(lowercase,uppercase,numeric,special,length){
   }
 
   myPassword = myPassword.split('');
-  
-  for(var i=0; i<length;i++){
-    var random = Math.floor(Math.random()*myPassword.length);
-    newPassword += myPassword[random];
-  }
+  //end adding character type criteria to password
+
+  //generates a random password based on the character type criteria
+  //do{
+    newPassword = "";
+    for(var i=0; i<length;i++){
+      var random = Math.floor(Math.random()*myPassword.length);
+      newPassword += myPassword[random];
+    } 
+ // }while(!fulfillCriteria(lowercase,uppercase,numeric,special,
+   // lowercaseString,uppercaseString,numericString,specialString,newPassword));
 
   return newPassword;
 }
+
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
